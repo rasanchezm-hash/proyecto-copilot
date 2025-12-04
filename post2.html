@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Colisiones - Tablas Hash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="post1.html">1. Introducción</a>
+            <a href="post2.html">2. Colisiones</a>
+            <a href="post3.html">3. Implementación</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Manejo de Colisiones</h1>
+        <p>Una <strong>colisión</strong> ocurre cuando la función hash genera el mismo índice para dos claves diferentes. Existen dos estrategias principales para resolver esto.</p>
+
+        <h2>1. Encadenamiento (Chaining)</h2>
+        <p>En este método, cada posición del arreglo contiene un puntero a una lista enlazada (o cadena). Si ocurre una colisión, simplemente agregamos el nuevo elemento al final de la lista en esa posición.</p>
+        
+        <div class="visual-box">
+            <h4>Ejemplo Visual: Chaining</h4>
+            <p>Índice 2 tiene colisión entre "Ana" y "Luis":</p>
+            <div class="array-vertical">
+                <div class="array-cell">
+                    <span>[0]</span> <span>(vacío)</span>
+                </div>
+                <div class="array-cell">
+                    <span>[1]</span> <span>{Pedro, 101}</span>
+                </div>
+                <div class="array-cell" style="background:#e0e7ff">
+                    <span>[2]</span> 
+                    <div>
+                        <span>{Ana, 202}</span>
+                        <div class="collision-chain">➜ {Luis, 555}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. Direccionamiento Abierto (Open Addressing)</h2>
+        <p>Aquí, todos los elementos se almacenan en el arreglo mismo. Si hay colisión, buscamos la siguiente celda vacía.</p>
+        <ul>
+            <li><strong>Linear Probing:</strong> Busca secuencialmente: i+1, i+2...</li>
+            <li><strong>Quadratic Probing:</strong> Busca cuadráticamente: i+1², i+2²...</li>
+            <li><strong>Double Hashing:</strong> Usa una segunda función hash.</li>
+        </ul>
+
+        <div class="visual-box">
+            <h4>Ejemplo Visual: Linear Probing</h4>
+            <p>Si "Luis" cae en [2] y está ocupado, baja a [3].</p>
+            <div class="array-vertical">
+                <div class="array-cell"><span>[1]</span> <span>{Pedro, 101}</span></div>
+                <div class="array-cell" style="background:#e0e7ff"><span>[2]</span> <span>{Ana, 202} (Ocupado)</span></div>
+                <div class="array-cell" style="background:#dcfce7"><span>[3]</span> <span>{Luis, 555} (Insertado aquí)</span></div>
+            </div>
+        </div>
+
+        <a href="post3.html" class="btn">Siguiente: Implementación</a>
+    </div>
+</body>
+</html>

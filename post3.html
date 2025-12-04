@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementación - Tablas Hash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="post1.html">1. Introducción</a>
+            <a href="post2.html">2. Colisiones</a>
+            <a href="post3.html">3. Implementación</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Implementación y Operaciones</h1>
+        <p>Analicemos la lógica detrás de las tres operaciones fundamentales.</p>
+
+        <h2>1. Insertar (put)</h2>
+        <ol>
+            <li>Calcular el hash de la clave: <code>h = hash(key)</code>.</li>
+            <li>Obtener índice ajustado al tamaño: <code>i = h % tamaño_tabla</code>.</li>
+            <li>Si <code>tabla[i]</code> está vacío, insertar. Si no, manejar colisión (añadir a la lista o buscar siguiente celda).</li>
+        </ol>
+
+        <h2>2. Buscar (get)</h2>
+        <p>El proceso es idéntico a la inserción para localizar la celda. Comparamos la clave buscada con la almacenada. Si coinciden, devolvemos el valor. Si la celda está vacía, la clave no existe.</p>
+
+        <h2>3. Eliminar (delete)</h2>
+        <p>Requiere cuidado especial dependiendo de la estrategia:</p>
+        
+        <div class="visual-box">
+            <h4>Lógica de Eliminación (Open Addressing)</h4>
+            <p>No podemos dejar la celda vacía porque rompería la búsqueda de elementos posteriores (Linear Probing). Usamos una marca "Tombstone" (Lápida).</p>
+            
+            <div class="array-vertical">
+                <div class="array-cell"><span>[2]</span> <span>{Ana, 202}</span></div>
+                <div class="array-cell deleted"><span>[3]</span> <span>{Luis, 555} (ELIMINADO)</span></div>
+                <div class="array-cell"><span>[4]</span> <span>{Maria, 999}</span></div>
+            </div>
+            <p><small>Al buscar "Maria" (hash en [2]), el algoritmo salta [2], ve [3] como eliminado pero ocupado, y continúa a [4].</small></p>
+        </div>
+
+        <a href="index.html" class="btn">Volver al Inicio</a>
+    </div>
+</body>
+</html>

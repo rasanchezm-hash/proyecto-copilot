@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción - Tablas Hash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="post1.html">1. Introducción</a>
+            <a href="post2.html">2. Colisiones</a>
+            <a href="post3.html">3. Implementación</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Introducción a las Tablas Hash</h1>
+        <p>Una <strong>Tabla Hash</strong> (o mapa hash) es una estructura de datos que implementa un tipo abstracto de datos de arreglo asociativo, una estructura que puede mapear claves a valores.</p>
+
+        <h2>Conceptos Clave</h2>
+        <ul>
+            <li><strong>Clave (Key):</strong> El identificador único del dato (ej. número de cédula, nombre de usuario).</li>
+            <li><strong>Valor (Value):</strong> La información asociada a la clave (ej. objeto Cliente, número de teléfono).</li>
+            <li><strong>Función Hash:</strong> Un algoritmo matemático que transforma la clave en un número entero (el índice).</li>
+            <li><strong>Índice:</strong> La posición específica dentro del arreglo donde se guardará el valor.</li>
+        </ul>
+
+        <h2>¿Por qué son tan eficientes?</h2>
+        <p>La magia de las tablas hash reside en su velocidad. En promedio, las operaciones de inserción, búsqueda y eliminación tienen una complejidad de tiempo de <strong>O(1)</strong>. Esto significa que el tiempo de acceso es constante, sin importar qué tan grande sea la tabla.</p>
+
+        <h2>Ejemplo Visual: El flujo de inserción</h2>
+        <div class="visual-box">
+            <p>Insertar: <code>put("Juan", 305)</code></p>
+            <div class="hash-diagram">
+                <div class="box">Clave: "Juan"</div>
+                <div class="arrow">➜</div>
+                <div class="box" style="background:#fff3cd">Función Hash<br>hash("Juan") % 10</div>
+                <div class="arrow">➜</div>
+                <div class="box index-box">Índice: 4</div>
+                <div class="arrow">➜</div>
+                <div class="box value-box">Arreglo[4] = 305</div>
+            </div>
+        </div>
+
+        <a href="post2.html" class="btn">Siguiente: Manejo de Colisiones</a>
+    </div>
+</body>
+</html>
